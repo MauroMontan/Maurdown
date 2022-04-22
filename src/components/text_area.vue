@@ -1,30 +1,18 @@
 <script setup lang="ts">
 import { ref, Ref } from "vue";
-const text = ref("");
+import { useMarkdown } from "../store";
+
+const markdownStore = useMarkdown();
 
 const textArea: Ref<HTMLTextAreaElement | null> = ref(null);
-
-const insertion = ref(":)");
-
-const insert = (): void => {
-  const cursorPosition = textArea.value!.selectionStart;
-
-  const output = [
-    text.value.slice(0, cursorPosition),
-    insertion.value,
-    text.value.slice(cursorPosition),
-  ].join("");
-
-  text.value = output;
-
-  alert(cursorPosition);
-  textArea.value!.selectionStart = 4;
-};
 </script>
 
 <template>
-  <button @click="insert">add</button>
-  <textarea ref="textArea" v-model.trim="text"></textarea>
+  <textarea
+    ref="textArea"
+    placeholder="Editor for your amazing ideas :D"
+    v-model="markdownStore.rawText"
+  ></textarea>
 </template>
 
 <style scoped>
@@ -35,13 +23,30 @@ textarea {
   width: 100%;
   height: 100%;
   font-family: "Source Code Pro", monospace;
-  caret-color: green;
+  caret-color: #bb86fc;
   font-size: 1.2rem;
-  line-height: 3rem;
+  resize: none;
+  line-height: 2rem;
   text-align: justify;
 }
 
 textarea::-webkit-scrollbar {
-  display: none;
+  width: 0.5rem;
+}
+
+textarea::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 0.1rem;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: #bb86fc;
+  border-radius: 0.5rem;
+  outline: none;
+}
+textarea::-webkit-scrollbar-corner {
+  outline: none;
+  border: none;
+  background-color: transparent;
 }
 </style>

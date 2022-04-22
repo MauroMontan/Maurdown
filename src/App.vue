@@ -2,6 +2,9 @@
 import DesktopLayout from "./components/layouts/desktop_layout.vue";
 import TextArea from "./components/text_area.vue";
 import Appbar from "./components/appbar.vue";
+import MarkdownArea from "./components/markdown_area.vue";
+import { useMarkdown } from "./store";
+const markdownStore = useMarkdown();
 </script>
 
 <template>
@@ -10,7 +13,8 @@ import Appbar from "./components/appbar.vue";
       <Appbar></Appbar>
     </template>
 
-    <TextArea></TextArea>
+    <MarkdownArea v-if="markdownStore.editorMode"></MarkdownArea>
+    <TextArea v-else></TextArea>
   </DesktopLayout>
 </template>
 
@@ -21,10 +25,10 @@ import Appbar from "./components/appbar.vue";
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: black;
+  /*color: #adbac7;*/
+  background-color: #e2e4e9;
   font-family: "Source Code Pro", monospace;
-  background-color: white;
-  /*background-color: #191919;*/
+  /*background-color: #22272e;*/
 }
 
 textarea::-moz-selection {

@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import ButtonGroup from "./button_group.vue";
+import IconButton from "./buttons/icon_button.vue";
+import { useMarkdown } from "../store";
+
+const markdownStore = useMarkdown();
 </script>
 
 <template>
   <div class="appbar">
     <ButtonGroup></ButtonGroup>
+
+    <IconButton @click="markdownStore.toggleView">visibility</IconButton>
   </div>
 </template>
 
