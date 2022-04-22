@@ -47,7 +47,6 @@ main {
   height: 100%;
   padding: 2rem;
   overflow: scroll;
-  transition: all 1s ease;
   display: flex;
   flex-direction: column;
   gap: 0.9rem;

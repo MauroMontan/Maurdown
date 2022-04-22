@@ -3,8 +3,16 @@ import DesktopLayout from "./components/layouts/desktop_layout.vue";
 import TextArea from "./components/text_area.vue";
 import Appbar from "./components/appbar.vue";
 import MarkdownArea from "./components/markdown_area.vue";
-import { useMarkdown } from "./store";
+import { useMarkdown, useTheme } from "./store";
+import { computed } from "vue";
+
 const markdownStore = useMarkdown();
+
+const uiStore = useTheme();
+
+const currentTheme = computed(() => {
+  return uiStore.themeMode;
+});
 </script>
 
 <template>
@@ -26,7 +34,8 @@ const markdownStore = useMarkdown();
   padding: 0;
   box-sizing: border-box;
   /*color: #adbac7;*/
-  background-color: #e2e4e9;
+  color: v-bind("currentTheme.color");
+  background-color: v-bind("currentTheme.background");
   font-family: "Source Code Pro", monospace;
   /*background-color: #22272e;*/
 }

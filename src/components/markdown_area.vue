@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useMarkdown } from "../store";
+import { useMarkdown, useTheme } from "../store";
 
+const uiStore = useTheme();
 const markdownStore = useMarkdown();
 
 const richText = computed(() => {
@@ -28,15 +29,16 @@ const richText = computed(() => {
 
 .markdown-area pre {
   margin: 0.5rem;
-  background-color: #2d333b;
+  background-color: v-bind("uiStore.themeMode.codeTheme.background");
   padding: 0.5rem;
   border-radius: 0.5rem;
   overflow: auto;
 }
 .markdown-area code {
-  background-color: transparent;
   font-size: 0.9rem;
   word-wrap: break-word;
+  color: v-bind("uiStore.themeMode.codeTheme.color");
+  background: transparent;
 }
 
 .markdown-area a {
@@ -66,6 +68,10 @@ td {
 
 .markdown-area::-webkit-scrollbar {
   width: 0.5rem;
+}
+
+.markdown-area pre::-webkit-scrollbar {
+  height: 0.5rem;
 }
 
 .markdown-area::-webkit-scrollbar-track {

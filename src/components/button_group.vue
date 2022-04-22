@@ -3,7 +3,6 @@ import { ref } from "vue";
 import IconButton from "./buttons/icon_button.vue";
 
 const icons = ref([
-  { icon: "settings", snippet: "" },
   { icon: "code", snippet: "" },
   { icon: "image", snippet: "![name](image url)}" },
   { icon: "format_list_bulleted", snippet: "- item \n - item \n - item" },
