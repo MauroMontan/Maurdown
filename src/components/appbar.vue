@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ButtonGroup from "./button_group.vue";
 import IconButton from "./buttons/icon_button.vue";
+import Switch from "./buttons/switch.vue";
 import { useMarkdown, useTheme } from "../store";
 
 const uiStore = useTheme();
@@ -11,8 +12,10 @@ const markdownStore = useMarkdown();
   <div class="appbar">
     <ButtonGroup></ButtonGroup>
 
-    <input @click="uiStore.toggleTheme" type="checkbox" />
-    <IconButton @click="markdownStore.toggleView">visibility</IconButton>
+    <div class="actions">
+      <IconButton @click="markdownStore.toggleView">visibility</IconButton>
+      <Switch @toggle="uiStore.toggleTheme"></Switch>
+    </div>
   </div>
 </template>
 
@@ -24,5 +27,11 @@ const markdownStore = useMarkdown();
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 </style>

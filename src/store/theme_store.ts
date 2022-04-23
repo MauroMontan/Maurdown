@@ -6,10 +6,11 @@ export const useTheme = defineStore("Theme", {
     darkTheme: {
       background: "#22272e",
       color: "#9aa6b2",
+      accentColor: "#bb86fc",
 
       selectionTheme: {
-        background: "white",
-        color: "black",
+        background: "#bb86fc",
+        color: "#22272e",
       },
 
       codeTheme: {
@@ -21,9 +22,10 @@ export const useTheme = defineStore("Theme", {
     lightTheme: {
       background: "#e2e4e9",
       color: "#38434f",
+      accentColor: "#ceb5ed",
 
       selectionTheme: {
-        background: "back",
+        background: "#ceb5ed",
         color: "white",
       },
 

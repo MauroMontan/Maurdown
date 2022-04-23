@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref, Ref } from "vue";
-import { useMarkdown } from "../store";
+import { useMarkdown, useTheme } from "../store";
 
 const markdownStore = useMarkdown();
+const uiStore = useTheme();
 
 const textArea: Ref<HTMLTextAreaElement | null> = ref(null);
 </script>
@@ -28,6 +29,7 @@ textarea {
   resize: none;
   line-height: 2rem;
   text-align: justify;
+  padding: 0.5rem;
 }
 
 textarea::-webkit-scrollbar {
@@ -40,7 +42,7 @@ textarea::-webkit-scrollbar-track {
 }
 
 textarea::-webkit-scrollbar-thumb {
-  background-color: #bb86fc;
+  background-color: v-bind("uiStore.themeMode.accentColor");
   border-radius: 0.5rem;
   outline: none;
 }

@@ -42,13 +42,13 @@ const currentTheme = computed(() => {
 
 textarea::-moz-selection {
   /* Code for Firefox */
-  color: black;
-  background: white;
+  color: v-bind("uiStore.themeMode.selectionTheme.color");
+  background: v-bind("uiStore.themeMode.selectionTheme.background");
 }
 
 textarea::selection {
-  color: white;
-  background: #29366f;
+  color: v-bind("uiStore.themeMode.selectionTheme.color");
+  background: v-bind("uiStore.themeMode.selectionTheme.background");
 }
 
 #app {

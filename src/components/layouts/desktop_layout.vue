@@ -1,9 +1,4 @@
-<script setup lang="ts">
-import { ref } from "vue";
-const size = ref("20%");
-
-const filename = ref("Maurdown.md");
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <!-- code... -->
@@ -17,7 +12,7 @@ const filename = ref("Maurdown.md");
       </header>
 
       <main>
-        <div class="filename"><input v-model="filename" type="text" /></div>
+        <div class="filename"><input placeholder="filename" type="text" /></div>
 
         <slot></slot>
       </main>
@@ -37,7 +32,6 @@ const filename = ref("Maurdown.md");
 }
 
 header {
-  border-bottom: solid 0.3px darkgray;
   height: 3rem;
   width: 100%;
 }
@@ -52,10 +46,13 @@ main {
   gap: 0.9rem;
 }
 
+.filename input::placeholder {
+  color: grey;
+}
+
 .filename input {
   border: none;
   outline: none;
-  font-size: 1.5rem;
   font-weight: bold;
   color: #bb86fc;
 }
@@ -69,9 +66,9 @@ main::-webkit-scrollbar {
 }
 
 aside {
-  width: v-bind("size");
-  border-right: solid 0.1px darkgray;
+  width: 20%;
   overflow: auto;
+  background-color: #bb86fc;
 }
 .body {
   height: 100%;

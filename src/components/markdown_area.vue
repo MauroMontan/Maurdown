@@ -21,7 +21,7 @@ const richText = computed(() => {
   padding: 1.5rem;
   font-family: "Source Code Pro", monospace;
   word-wrap: break-word;
-  font-size: 1.3rem;
+  font-size: 1rem;
   overflow: auto;
   align-items: center;
   line-height: 1.5;
@@ -70,10 +70,6 @@ td {
   width: 0.5rem;
 }
 
-.markdown-area pre::-webkit-scrollbar {
-  height: 0.5rem;
-}
-
 .markdown-area::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
   border-radius: 0.1rem;
@@ -87,6 +83,40 @@ td {
 }
 
 .markdown-area::-webkit-scrollbar-corner {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.markdown-area pre::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.markdown-area pre::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 0.1rem;
+}
+
+.markdown-area pre::-webkit-scrollbar-thumb {
+  background-color: #bb86fc;
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: grab;
+}
+
+.markdown-area blockquote {
+  border-left: solid 0.5rem #bb86fc;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: v-bind("uiStore.themeMode.codeTheme.background");
+}
+.markdown-area blockquote p {
+  background-color: transparent;
+}
+
+.markdown-area pre::-webkit-scrollbar-corner {
   outline: none;
   border: none;
   background-color: transparent;
