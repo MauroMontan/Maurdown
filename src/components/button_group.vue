@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed } from "@vue/reactivity";
+import { useMarkdown } from "../store";
 import IconButton from "./buttons/icon_button.vue";
 
-const icons = ref([
-  { icon: "code", snippet: "" },
-  { icon: "image", snippet: "![name](image url)}" },
-  { icon: "format_list_bulleted", snippet: "- item \n - item \n - item" },
-  { icon: "checklist", snippet: "" },
-  { icon: "table_chart", snippet: "" },
-  { icon: "calendar_today", snippet: "" },
-]);
+const markdownStore = useMarkdown();
+
+
+const buttonData = computed(()=>{
+    return markdownStore.markdownSnippets;
+})
+
 </script>
 
 <template>
   <div class="button-group">
-    <IconButton v-for="icon in icons"> {{ icon.icon }} </IconButton>
+    <IconButton   v-for="icon in buttonData" @click="markdownStore.insertSnippet(icon.snippet)" > {{ icon.icon }} </IconButton>
   </div>
 </template>
 

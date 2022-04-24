@@ -6,11 +6,13 @@ import { useMarkdown, useTheme } from "../store";
 
 const uiStore = useTheme();
 const markdownStore = useMarkdown();
+
+
 </script>
 
 <template>
   <div class="appbar">
-    <ButtonGroup></ButtonGroup>
+    <ButtonGroup/>
 
     <div class="actions">
       <IconButton @click="markdownStore.toggleView">visibility</IconButton>
