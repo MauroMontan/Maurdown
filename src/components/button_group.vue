@@ -14,7 +14,7 @@ const buttonData = computed(()=>{
 
 <template>
   <div class="button-group">
-    <IconButton   v-for="icon in buttonData" @click="markdownStore.insertSnippet(icon.snippet)" > {{ icon.icon }} </IconButton>
+    <IconButton v-for="icon in buttonData" :disabledButton="!markdownStore.editorMode" @click="markdownStore.insertSnippet(icon.snippet)" > {{ icon.icon }} </IconButton>
   </div>
 </template>
 

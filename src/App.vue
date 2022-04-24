@@ -11,38 +11,36 @@ const markdownStore = useMarkdown();
 const uiStore = useTheme();
 
 const currentTheme = computed(() => {
-    return uiStore.themeMode;
+  return uiStore.themeMode;
 });
 </script>
 
 <template>
-    <DesktopLayout>
-        <template v-slot:appbar>
-            <Appbar></Appbar>
-        </template>
+  <DesktopLayout>
+    <template v-slot:appbar>
+      <Appbar></Appbar>
+    </template>
 
-        <TextArea v-if="markdownStore.editorMode" ></TextArea>
-        <MarkdownArea v-else ></MarkdownArea>
-    </DesktopLayout>
+    <TextArea v-if="markdownStore.editorMode"></TextArea>
+    <MarkdownArea v-else></MarkdownArea>
+  </DesktopLayout>
 </template>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /*color: #adbac7;*/
-    color: v-bind("currentTheme.color");
-    background-color: v-bind("currentTheme.background");
-    font-family: "Source Code Pro", monospace;
-    /*background-color: #22272e;*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: v-bind("currentTheme.color");
+  background-color: v-bind("currentTheme.background");
+  font-family: "Source Code Pro", monospace;
 }
 
 
 #app {
-    height: 100vh;
-    width: 100%;
+  height: 100vh;
+  width: 100%;
 }
 </style>

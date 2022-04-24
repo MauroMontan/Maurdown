@@ -66,6 +66,22 @@ td {
   height: 90%;
 }
 
+
+.markdown-area blockquote {
+  border-left: solid 0.5rem #bb86fc;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: v-bind("uiStore.themeMode.codeTheme.background");
+}
+.markdown-area blockquote p {
+  background-color: transparent;
+}
+
+/*
+scrollbar settings
+*/
+
 .markdown-area::-webkit-scrollbar {
   width: 0.5rem;
 }
@@ -105,16 +121,6 @@ td {
   cursor: grab;
 }
 
-.markdown-area blockquote {
-  border-left: solid 0.5rem #bb86fc;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
-  background-color: v-bind("uiStore.themeMode.codeTheme.background");
-}
-.markdown-area blockquote p {
-  background-color: transparent;
-}
 
 .markdown-area pre::-webkit-scrollbar-corner {
   outline: none;

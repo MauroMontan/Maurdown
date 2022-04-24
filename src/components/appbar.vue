@@ -12,7 +12,7 @@ const markdownStore = useMarkdown();
 
 <template>
   <div class="appbar">
-    <ButtonGroup/>
+    <ButtonGroup />
 
     <div class="actions">
       <IconButton @click="markdownStore.toggleView">visibility</IconButton>

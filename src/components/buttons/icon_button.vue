@@ -1,8 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from '@vue/reactivity';
+
+
+const props = defineProps<{
+  disabledButton?:boolean
+}>();
+
+
+const disabled = computed(()=>{
+
+  return props.disabledButton; 
+})
+
+</script>
 
 <template>
   <div class="icon-button">
-    <button class="material-symbols-outlined">
+    <button :disabled="disabled" class="material-symbols-outlined">
       <slot></slot>
     </button>
   </div>
