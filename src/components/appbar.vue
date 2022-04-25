@@ -13,9 +13,8 @@ const markdownStore = useMarkdown();
 <template>
   <div class="appbar">
     <ButtonGroup />
-
     <div class="actions">
- <IconButton @click="markdownStore.toggleView" > visibility </IconButton>
+      <IconButton @click="markdownStore.toggleView"> visibility </IconButton>
       <Switch @toggle="uiStore.toggleTheme"></Switch>
     </div>
   </div>

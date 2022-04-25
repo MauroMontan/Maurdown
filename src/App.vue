@@ -14,23 +14,20 @@ const currentTheme = computed(() => {
   return uiStore.themeMode;
 });
 
-const deviceType = computed(() => {
-  const ua = navigator.userAgent;
-  if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
-    return "tablet";
-  }
-  else if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
-    return "mobile";
-  }
-  return "desktop";
+const isMobile = computed(() => {
+
+const media = window.matchMedia("(max-width:768px)");
+
+if(media.matches){
+  return true
+} 
+return false
+
 })
-
-
-
 </script>
 
 <template>
-  <Layout v-if="deviceType === 'mobile' ">
+  <Layout v-if="isMobile">
     <template v-slot:appbar>
       <Appbar></Appbar>
     </template>
@@ -65,4 +62,5 @@ const deviceType = computed(() => {
   height: 100vh;
   width: 100%;
 }
+
 </style>

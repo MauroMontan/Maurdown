@@ -29,14 +29,12 @@ export const useMarkdown = defineStore("Markdown", {
       },
     ],
     splitModeEnabled: true,
-    focusModeEnabled:false,
     rawText: "",
     textArea: null as HTMLTextAreaElement | null,
   }),
   getters: {
     markdownText: (state) => marked(state.rawText),
     editorMode: (state) => state.splitModeEnabled,
-    focusMode:(state)=>state.focusModeEnabled
   },
   actions: {
 
@@ -47,9 +45,6 @@ export const useMarkdown = defineStore("Markdown", {
       })
     },
     
-    toggleFocusMode():void {
-      this.focusModeEnabled = !this.focusModeEnabled;
-    },
     toggleView(): void {
       this.splitModeEnabled = !this.splitModeEnabled;
     },
