@@ -6,15 +6,16 @@ import IconButton from "./buttons/icon_button.vue";
 const markdownStore = useMarkdown();
 
 
-const buttonData = computed(()=>{
-    return markdownStore.markdownSnippets;
+const buttonData = computed(() => {
+  return markdownStore.markdownSnippets;
 })
 
 </script>
 
 <template>
   <div class="button-group">
-    <IconButton v-for="icon in buttonData" :disabledButton="!markdownStore.editorMode" @click="markdownStore.insertSnippet(icon.snippet)" > {{ icon.icon }} </IconButton>
+    <IconButton v-for="icon in buttonData" :disabledButton="!markdownStore.editorMode"
+      @click="markdownStore.insertSnippet(icon.snippet)"> {{ icon.icon }} </IconButton>
   </div>
 </template>
 
@@ -22,5 +23,14 @@ const buttonData = computed(()=>{
 .button-group {
   display: flex;
   gap: 1rem;
+}
+
+@media (max-width:768px) {
+
+  .button-group {
+
+    gap: 0.5rem;
+
+  }
 }
 </style>

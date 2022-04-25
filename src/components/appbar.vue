@@ -15,7 +15,7 @@ const markdownStore = useMarkdown();
     <ButtonGroup />
 
     <div class="actions">
-      <IconButton @click="markdownStore.toggleView">visibility</IconButton>
+ <IconButton @click="markdownStore.toggleView" > visibility </IconButton>
       <Switch @toggle="uiStore.toggleTheme"></Switch>
     </div>
   </div>
@@ -35,5 +35,13 @@ const markdownStore = useMarkdown();
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+@media (max-width:768px) {
+
+  .actions {
+    gap: 0.5rem;
+  }
+
 }
 </style>

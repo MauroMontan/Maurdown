@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted,ref,Ref } from "vue";
 import { useMarkdown, useTheme } from "../store";
 
 const uiStore = useTheme();
@@ -8,10 +8,17 @@ const markdownStore = useMarkdown();
 const richText = computed(() => {
   return markdownStore.markdownText;
 });
+
+const markdownArea:Ref<HTMLDivElement | null> = ref(null);
+
+onMounted(()=>{  
+  markdownStore.bindScroll(markdownArea.value)
+  
+})
 </script>
 
 <template>
-  <div v-html="richText" class="markdown-area"></div>
+  <div ref="markdownArea" v-html="richText" class="markdown-area"></div>
 </template>
 
 <style>
@@ -127,4 +134,12 @@ scrollbar settings
   border: none;
   background-color: transparent;
 }
+
+@media (max-width:768px){
+  .markdown-area{
+  padding:0.5rem;
+  }
+
+}
+
 </style>

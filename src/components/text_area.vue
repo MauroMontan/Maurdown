@@ -74,4 +74,11 @@ textarea::-webkit-scrollbar-corner {
   border: none;
   background-color: transparent;
 }
+
+
+@media (max-width:768px) {
+  textarea {
+    padding:0.2rem
+  }
+}
 </style>

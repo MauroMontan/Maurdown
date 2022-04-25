@@ -3,13 +3,13 @@ import { computed } from '@vue/reactivity';
 
 
 const props = defineProps<{
-  disabledButton?:boolean
+  disabledButton?: boolean
 }>();
 
 
-const disabled = computed(()=>{
+const disabled = computed(() => {
 
-  return props.disabledButton; 
+  return props.disabledButton;
 })
 
 </script>
@@ -32,6 +32,7 @@ const disabled = computed(()=>{
   cursor: pointer;
   overflow: hidden;
 }
+
 button {
   display: flex;
   outline: none;
@@ -44,5 +45,14 @@ button {
 
 button:hover {
   color: #bb86fc;
+}
+
+@media (max-width:768px) {
+  .icon-button{
+    padding: 0.3rem;
+  }
+  button {
+    font-size: 1rem;
+  }
 }
 </style>

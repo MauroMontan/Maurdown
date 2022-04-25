@@ -9,12 +9,7 @@ defineEmits<{
 </script>
 <template>
   <label>
-    <input
-      :checked="active"
-      @click="$emit('toggle')"
-      v-model="active"
-      type="checkbox"
-    />
+    <input :checked="active" @click="$emit('toggle')" v-model="active" type="checkbox" />
     <span class="slider class material-symbols-outlined" />
   </label>
 </template>
@@ -24,6 +19,7 @@ input[type="checkbox"] {
   display: none;
   visibility: hidden;
 }
+
 .slider {
   border: solid 0.3px;
   position: relative;
@@ -54,8 +50,24 @@ input[type="checkbox"] {
   transition: ease-in 0.2s;
 }
 
-input[type="checkbox"]:checked ~ .slider:before {
+input[type="checkbox"]:checked~.slider:before {
   transform: translateX(2rem);
   content: "light_mode";
+}
+
+@media (max-width:768px) {
+
+  .slider:before{
+    top:0.1rem;
+  }
+  input[type="checkbox"]:checked~.slider:before {
+    transform: translateX(1rem);
+
+  }
+
+  .slider {
+    width: 3rem;
+    height:1.8rem;
+}
 }
 </style>

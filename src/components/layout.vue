@@ -12,7 +12,6 @@
       </header>
 
       <main>
-        <div class="filename"><input placeholder="filename" type="text" /></div>
 
         <slot></slot>
       </main>
@@ -42,7 +41,6 @@ main {
   padding: 2rem;
   overflow: scroll;
   display: flex;
-  flex-direction: column;
   gap: 0.9rem;
 }
 
@@ -70,11 +68,23 @@ aside {
   overflow: auto;
   background-color: #bb86fc;
 }
+
 .body {
   height: 100%;
   width: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+
+@media (max-width:768px) {
+  aside {
+    display: none;
+  }
+
+  main {
+    padding: 0.5rem;
+  }
 }
 </style>

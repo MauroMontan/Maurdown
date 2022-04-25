@@ -28,24 +28,35 @@ export const useMarkdown = defineStore("Markdown", {
         snippet: new Date().toString()
       },
     ],
-    editModeEnabled: true,
+    splitModeEnabled: true,
+    focusModeEnabled:false,
     rawText: "",
     textArea: null as HTMLTextAreaElement | null,
-
   }),
   getters: {
     markdownText: (state) => marked(state.rawText),
-    editorMode: (state) => state.editModeEnabled,
-
+    editorMode: (state) => state.splitModeEnabled,
+    focusMode:(state)=>state.focusModeEnabled
   },
   actions: {
 
+    bindScroll(markdownArea:HTMLDivElement|null): void {
+              
+      this.textArea!.addEventListener("scroll", (_) => {
+        markdownArea!.scrollTop = this.textArea!.scrollTop
+      })
+    },
+    
+    toggleFocusMode():void {
+      this.focusModeEnabled = !this.focusModeEnabled;
+    },
     toggleView(): void {
-      this.editModeEnabled = !this.editModeEnabled;
+      this.splitModeEnabled = !this.splitModeEnabled;
     },
     setTextArea(textArea: HTMLTextAreaElement | null): void {
       this.textArea = textArea;
     },
+
     insertSnippet(toInsert: string): void {
       const cursorPosition = this.textArea!.selectionStart;
       const output = [
