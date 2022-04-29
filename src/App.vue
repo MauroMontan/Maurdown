@@ -4,44 +4,44 @@ import TextArea from "./components/text_area.vue";
 import Appbar from "./components/appbar.vue";
 import MarkdownArea from "./components/markdown_area.vue";
 import { useMarkdown, useTheme } from "./store";
-import { computed} from "vue";
+import { computed } from "vue";
 
 const markdownStore = useMarkdown();
 
 const uiStore = useTheme();
 
 const currentTheme = computed(() => {
-  return uiStore.themeMode;
+    return uiStore.themeMode;
 });
 
 const isMobile = computed(() => {
 
-const media = window.matchMedia("(max-width:768px)");
+    const media = window.matchMedia("(max-width:768px)");
 
-if(media.matches){
-  return true
-} 
-return false
+    if (media.matches) {
+        return true
+    }
+    return false
 
 })
 </script>
 
 <template>
-  <Layout v-if="isMobile">
-    <template v-slot:appbar>
-      <Appbar></Appbar>
-    </template>
-    <TextArea v-if="markdownStore.editorMode"></TextArea>
-    <MarkdownArea v-else></MarkdownArea>
-  </Layout>
+    <Layout v-if="isMobile">
+        <template v-slot:appbar>
+            <Appbar></Appbar>
+        </template>
+        <TextArea v-if="markdownStore.editorMode"></TextArea>
+        <MarkdownArea v-else></MarkdownArea>
+    </Layout>
 
-  <Layout v-else>
-    <template v-slot:appbar>
-      <Appbar></Appbar>
-    </template>
-    <TextArea v-show="markdownStore.editorMode"></TextArea>
-    <MarkdownArea></MarkdownArea>
-  </Layout>
+    <Layout v-else>
+        <template v-slot:appbar>
+            <Appbar></Appbar>
+        </template>
+        <TextArea class="text-view" v-show="markdownStore.editorMode"></TextArea>
+        <MarkdownArea></MarkdownArea>
+    </Layout>
 
 </template>
 
@@ -49,18 +49,23 @@ return false
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: v-bind("currentTheme.color");
-  background-color: v-bind("currentTheme.background");
-  font-family: "Source Code Pro", monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: v-bind("currentTheme.color");
+    background-color: v-bind("currentTheme.background");
+    font-family: "Source Code Pro", monospace;
 }
 
+@media (max-width:768px) {
+
+    .text-view {
+        display: none
+    }
+}
 
 #app {
-  height: 100vh;
-  width: 100%;
+    height: 100vh;
+    width: 100%;
 }
-
 </style>
