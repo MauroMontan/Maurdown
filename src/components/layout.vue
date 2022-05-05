@@ -47,7 +47,7 @@ header {
 main {
     width: 100%;
     height: 100%;
-    padding: 2rem;
+    padding: 0.5rem 1rem;
     overflow: scroll;
     display: flex;
     gap: 0.9rem;
@@ -63,15 +63,5 @@ main::-webkit-scrollbar {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-}
-
-@media (max-width: 768px) {
-    aside {
-        display: none;
-    }
-
-    main {
-        padding: 0.5rem;
-    }
 }
 </style>

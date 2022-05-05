@@ -171,10 +171,4 @@ scrollbar settings
     border: none;
     background-color: transparent;
 }
-
-@media (max-width: 768px) {
-    .markdown-area {
-        padding: 0.5rem;
-    }
-}
 </style>
