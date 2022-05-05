@@ -1,18 +1,24 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from "vue";
+import { useTheme } from "../store";
+
+const uiStore = useTheme();
+
+const currentTheme = computed(() => {
+    return uiStore.themeMode;
+});
+</script>
 
 <template>
     <!-- code... -->
 
     <div class="layout">
-        <aside name="sidebar"></aside>
-
         <div class="body">
             <header>
                 <slot name="appbar"></slot>
             </header>
 
             <main>
-
                 <slot></slot>
             </main>
         </div>
@@ -28,6 +34,9 @@
     height: 100%;
     width: 100%;
     display: flex;
+
+    background-color: v-bind("currentTheme.background");
+    color: v-bind("currentTheme.color");
 }
 
 header {
@@ -44,29 +53,8 @@ main {
     gap: 0.9rem;
 }
 
-.filename input::placeholder {
-    color: grey;
-}
-
-.filename input {
-    border: none;
-    outline: none;
-    font-weight: bold;
-    color: #bb86fc;
-}
-
-::placeholder {
-    color: #bb86fc;
-}
-
 main::-webkit-scrollbar {
     display: none;
-}
-
-aside {
-    width: 20%;
-    overflow: auto;
-    background-color: #bb86fc;
 }
 
 .body {
@@ -77,8 +65,7 @@ aside {
     flex-direction: column;
 }
 
-
-@media (max-width:768px) {
+@media (max-width: 768px) {
     aside {
         display: none;
     }

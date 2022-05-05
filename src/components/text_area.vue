@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { onMounted, ref, Ref } from "vue";
+import { onMounted, ref, Ref, computed } from "vue";
 import { useMarkdown, useTheme } from "../store";
 
 const markdownStore = useMarkdown();
 const uiStore = useTheme();
 
 const textArea: Ref<HTMLTextAreaElement | null> = ref(null);
+
+const currentTheme = computed(() => {
+    return uiStore.themeMode;
+});
 
 onMounted(() => {
     markdownStore.setTextArea(textArea.value);
@@ -22,7 +26,6 @@ onMounted(() => {
 
 <style scoped>
 textarea {
-    background-color: transparent;
     outline: none;
     border: none;
     width: 100%;
@@ -31,6 +34,9 @@ textarea {
     caret-color: #bb86fc;
     resize: none;
     padding: 0.5rem;
+
+    background-color: v-bind("currentTheme.background");
+    color: v-bind("currentTheme.color");
 }
 
 /*

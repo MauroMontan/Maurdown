@@ -13,34 +13,15 @@ const uiStore = useTheme();
 const currentTheme = computed(() => {
     return uiStore.themeMode;
 });
-
-const isMobile = computed(() => {
-    const media = window.matchMedia("(max-width:768px)");
-
-    if (media.matches) {
-        return true;
-    }
-    return false;
-});
 </script>
 
 <template>
-    <Layout v-if="isMobile">
+    <Layout>
         <template v-slot:appbar>
             <Appbar></Appbar>
         </template>
-        <TextArea v-if="markdownStore.editorMode"></TextArea>
-        <MarkdownArea v-else></MarkdownArea>
-    </Layout>
 
-    <Layout v-else>
-        <template v-slot:appbar>
-            <Appbar></Appbar>
-        </template>
-        <TextArea
-            class="text-view"
-            v-show="markdownStore.editorMode"
-        ></TextArea>
+        <TextArea></TextArea>
         <MarkdownArea></MarkdownArea>
     </Layout>
 </template>
@@ -53,19 +34,13 @@ const isMobile = computed(() => {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: v-bind("currentTheme.color");
-    background-color: v-bind("currentTheme.background");
     font-family: "Space Mono", monospace;
-}
-
-@media (max-width: 768px) {
-    .text-view {
-        display: none;
-    }
 }
 
 #app {
     height: 100vh;
     width: 100%;
+    background-color: v-bind("currentTheme.background");
+    color: v-bind("currentTheme.color");
 }
 </style>

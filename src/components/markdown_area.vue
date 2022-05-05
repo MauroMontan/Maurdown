@@ -68,13 +68,19 @@ onMounted(() => {
     font-weight: bold;
 }
 
-.markdown-area ul {
+.markdown-area ol,
+ul {
     margin-left: 2rem;
+}
+
+summary {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .markdown-area ul li {
     list-style: unset;
-    padding: 1rem 0 1rem 0;
+    padding: 0.5rem 0 0.5rem 0;
 }
 
 .markdown-area table,
@@ -110,6 +116,17 @@ td {
 scrollbar settings
 */
 
+.markdown-area::-moz-selection {
+    /* Code for Firefox */
+    color: v-bind("uiStore.themeMode.selectionTheme.color");
+    background: v-bind("uiStore.themeMode.selectionTheme.background");
+}
+
+.markdown-area::selection {
+    color: v-bind("uiStore.themeMode.selectionTheme.color");
+    background: v-bind("uiStore.themeMode.selectionTheme.background");
+}
+
 .markdown-area::-webkit-scrollbar {
     width: 0.5rem;
 }
@@ -120,7 +137,7 @@ scrollbar settings
 }
 
 .markdown-area::-webkit-scrollbar-thumb {
-    background-color: #bb86fc;
+    background: v-bind("uiStore.themeMode.accentColor");
     border-radius: 0.5rem;
     outline: none;
     cursor: grab;
