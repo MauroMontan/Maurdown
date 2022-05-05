@@ -15,15 +15,13 @@ const currentTheme = computed(() => {
 });
 
 const isMobile = computed(() => {
-
     const media = window.matchMedia("(max-width:768px)");
 
     if (media.matches) {
-        return true
+        return true;
     }
-    return false
-
-})
+    return false;
+});
 </script>
 
 <template>
@@ -39,14 +37,17 @@ const isMobile = computed(() => {
         <template v-slot:appbar>
             <Appbar></Appbar>
         </template>
-        <TextArea class="text-view" v-show="markdownStore.editorMode"></TextArea>
+        <TextArea
+            class="text-view"
+            v-show="markdownStore.editorMode"
+        ></TextArea>
         <MarkdownArea></MarkdownArea>
     </Layout>
-
 </template>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
 
 * {
     margin: 0;
@@ -54,13 +55,12 @@ const isMobile = computed(() => {
     box-sizing: border-box;
     color: v-bind("currentTheme.color");
     background-color: v-bind("currentTheme.background");
-    font-family: "Source Code Pro", monospace;
+    font-family: "Space Mono", monospace;
 }
 
-@media (max-width:768px) {
-
+@media (max-width: 768px) {
     .text-view {
-        display: none
+        display: none;
     }
 }
 
