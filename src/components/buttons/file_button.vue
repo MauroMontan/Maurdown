@@ -9,7 +9,7 @@ const uiStore = useTheme();
 const fileStore = useFile();
 
 const file = computed(() => {
-    return fileInput.value.files[0];
+    return fileInput.value?.files![0]!;
 });
 
 const currentTheme = computed(() => {
