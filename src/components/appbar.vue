@@ -14,11 +14,19 @@ const markdownStore = useMarkdown();
 <template>
     <div class="appbar">
         <ButtonGroup />
+
+        <div>
+            <input
+                class="filename"
+                v-model="fileStore.filename"
+                placeholder="filename.md"
+                type="text"
+            />
+        </div>
+
         <div class="actions">
             <FileButton> upload_file </FileButton>
-            <IconButton @click="fileStore.fileSave('current')">
-                save_as
-            </IconButton>
+            <IconButton @click="fileStore.fileSave"> save_as </IconButton>
             <IconButton @click="markdownStore.toggleView">
                 visibility
             </IconButton>
@@ -35,6 +43,17 @@ const markdownStore = useMarkdown();
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
+}
+
+.filename {
+    outline: none;
+    width: fit-content;
+    font-size: 1.2rem;
+    background-color: transparent;
+    font-weight: bold;
+    text-align: center;
+    color: #6d5492;
+    border: none;
 }
 
 .actions {

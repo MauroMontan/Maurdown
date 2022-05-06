@@ -5,32 +5,32 @@ import IconButton from "./buttons/icon_button.vue";
 
 const markdownStore = useMarkdown();
 
-
 const buttonData = computed(() => {
-  return markdownStore.markdownSnippets;
-})
-
+    return markdownStore.markdownSnippets;
+});
 </script>
 
 <template>
-  <div class="button-group">
-    <IconButton v-for="icon in buttonData" :disabledButton="!markdownStore.editorMode"
-      @click="markdownStore.insertSnippet(icon.snippet)"> {{ icon.icon }} </IconButton>
-  </div>
+    <div class="button-group">
+        <IconButton
+            v-for="icon in buttonData"
+            :disabledButton="!markdownStore.editorMode"
+            @click="markdownStore.insertSnippet(icon.snippet)"
+        >
+            {{ icon.icon }}
+        </IconButton>
+    </div>
 </template>
 
 <style scoped>
 .button-group {
-  display: flex;
-  gap: 1rem;
+    display: flex;
+    gap: 1rem;
 }
 
-@media (max-width:768px) {
-
-  .button-group {
-
-    gap: 0.5rem;
-
-  }
+@media (max-width: 768px) {
+    .button-group {
+        gap: 0.5rem;
+    }
 }
 </style>

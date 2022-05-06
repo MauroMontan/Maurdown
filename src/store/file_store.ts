@@ -5,6 +5,7 @@ import { saveAs } from "file-saver";
 export const useFile = defineStore("file store", {
     state: () => ({
         currentFile: null as string | null,
+        filename: "" as string,
     }),
     getters: {},
     actions: {
@@ -19,12 +20,12 @@ export const useFile = defineStore("file store", {
             reader.readAsText(file);
         },
 
-        fileSave(filename: string) {
+        fileSave() {
             const markdownStore = useMarkdown();
             const blob = new Blob([markdownStore.rawText], {
                 type: "text/plain;charset=utf-8",
             });
-            saveAs(blob, `${filename}1.md`);
+            saveAs(blob, `${this.filename}1.md`);
         },
     },
 });
