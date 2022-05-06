@@ -28,6 +28,7 @@ onMounted(() => {
     font-family: "Source Code Pro", monospace;
     word-wrap: break-word;
     overflow: auto;
+    scroll-behavior: smooth;
 }
 
 .markdown-area h1 {

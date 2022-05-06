@@ -4,7 +4,9 @@ import IconButton from "./buttons/icon_button.vue";
 import FileButton from "./buttons/file_button.vue";
 import Switch from "./buttons/switch.vue";
 import { useMarkdown, useTheme } from "../store";
+import { useFile } from "../store/file_store";
 
+const fileStore = useFile();
 const uiStore = useTheme();
 const markdownStore = useMarkdown();
 </script>
@@ -14,7 +16,9 @@ const markdownStore = useMarkdown();
         <ButtonGroup />
         <div class="actions">
             <FileButton> upload_file </FileButton>
-            <IconButton> save_as </IconButton>
+            <IconButton @click="fileStore.fileSave('current')">
+                save_as
+            </IconButton>
             <IconButton @click="markdownStore.toggleView">
                 visibility
             </IconButton>
