@@ -3,10 +3,8 @@ import Layout from "./components/layout.vue";
 import TextArea from "./components/text_area.vue";
 import Appbar from "./components/appbar.vue";
 import MarkdownArea from "./components/markdown_area.vue";
-import { useMarkdown, useTheme } from "./store";
+import { useTheme } from "./store";
 import { computed } from "vue";
-
-const markdownStore = useMarkdown();
 
 const uiStore = useTheme();
 
