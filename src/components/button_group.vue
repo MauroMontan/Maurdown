@@ -12,11 +12,8 @@ const buttonData = computed(() => {
 
 <template>
     <div class="button-group">
-        <IconButton
-            v-for="icon in buttonData"
-            :disabledButton="!markdownStore.editorMode"
-            @click="markdownStore.insertSnippet(icon.snippet)"
-        >
+        <IconButton v-for="icon in buttonData" :tooltip="icon.tooltip" :disabledButton="!markdownStore.editorMode"
+            @click="markdownStore.insertSnippet(icon.snippet)">
             {{ icon.icon }}
         </IconButton>
     </div>
@@ -26,11 +23,5 @@ const buttonData = computed(() => {
 .button-group {
     display: flex;
     gap: 1rem;
-}
-
-@media (max-width: 768px) {
-    .button-group {
-        gap: 0.5rem;
-    }
 }
 </style>

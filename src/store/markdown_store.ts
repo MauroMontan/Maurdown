@@ -53,7 +53,8 @@ export const useMarkdown = defineStore("Markdown", {
             this.splitModeEnabled = !this.splitModeEnabled;
         },
         setTextArea(textArea: HTMLTextAreaElement | null): void {
-            this.textArea = textArea;
+            if (textArea !== null)
+                this.textArea = textArea;
         },
 
         insertSnippet(toInsert: string): void {

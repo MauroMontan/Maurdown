@@ -1,4 +1,4 @@
-<script setup lang="ts">
+    <script setup lang="ts">
 import { computed } from "vue";
 import { useTheme } from "../store";
 
@@ -17,7 +17,6 @@ const currentTheme = computed(() => {
             <header>
                 <slot name="appbar"></slot>
             </header>
-
             <main>
                 <slot></slot>
             </main>
@@ -43,6 +42,7 @@ header {
     height: 3rem;
     width: 100%;
 }
+
 
 main {
     width: 100%;

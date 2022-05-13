@@ -4,7 +4,7 @@ import { saveAs } from "file-saver";
 
 export const useFile = defineStore("file store", {
     state: () => ({
-        currentFile: null as string | null,
+        currentFile: "" as string | null,
         filename: "" as string,
     }),
     getters: {},
@@ -12,12 +12,15 @@ export const useFile = defineStore("file store", {
         uploadFile(file: File) {
             const reader = new FileReader();
             reader.onload = (event) => {
+
                 const markdownStore = useMarkdown();
                 this.currentFile = event.target!.result!.toString();
+
                 markdownStore.rawText = this.currentFile;
             };
-
+            console.log(file.name);
             reader.readAsText(file);
+
         },
 
         fileSave() {
@@ -25,7 +28,11 @@ export const useFile = defineStore("file store", {
             const blob = new Blob([markdownStore.rawText], {
                 type: "text/plain;charset=utf-8",
             });
-            saveAs(blob, `${this.filename}1.md`);
+
+            const tempName = this.filename.replace(/\s+/g, '')
+            if (tempName !== "") {
+                saveAs(blob, `${tempName}.md`);
+            }
         },
     },
 });

@@ -16,18 +16,13 @@ const markdownStore = useMarkdown();
         <ButtonGroup />
 
         <div>
-            <input
-                class="filename"
-                v-model="fileStore.filename"
-                placeholder="filename.md"
-                type="text"
-            />
+            <input class="filename" v-model="fileStore.filename" placeholder="filename.md" type="text" />
         </div>
 
         <div class="actions">
             <FileButton> upload_file </FileButton>
-            <IconButton @click="fileStore.fileSave"> save_as </IconButton>
-            <IconButton @click="markdownStore.toggleView">
+            <IconButton tooltip="Save as" @click="fileStore.fileSave"> save_as </IconButton>
+            <IconButton tooltip="Toggle preview" @click="markdownStore.toggleView">
                 visibility
             </IconButton>
             <Switch @toggle="uiStore.toggleTheme"></Switch>

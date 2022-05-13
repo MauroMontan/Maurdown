@@ -1,16 +1,23 @@
 <script setup lang="ts">
-import { computed } from "@vue/reactivity";
+import { computed, ref } from "@vue/reactivity";
 import { useTheme } from "../../store";
 
 const uiStore = useTheme();
 
 const props = defineProps<{
     disabledButton?: boolean;
+    tooltip?: string;
 }>();
 
+const isTooltipOpen = ref(false);
+const openTooltip = () => {
+    isTooltipOpen.value = !isTooltipOpen.value;
+
+}
 const disabled = computed(() => {
     return props.disabledButton;
 });
+
 
 const currentTheme = computed(() => {
     return uiStore.themeMode;
@@ -19,8 +26,10 @@ const currentTheme = computed(() => {
 
 <template>
     <div class="icon-button">
-        <button :disabled="disabled" class="material-symbols-outlined">
+        <button @mouseover="openTooltip" @mouseleave="isTooltipOpen = false" :disabled="disabled"
+            class="material-symbols-outlined">
             <slot></slot>
+            <a v-show="isTooltipOpen"> {{ props.tooltip }} </a>
         </button>
     </div>
 </template>
@@ -33,7 +42,6 @@ const currentTheme = computed(() => {
     border-radius: 0.3rem;
     padding: 0.3rem;
     cursor: pointer;
-    overflow: hidden;
 }
 
 button {
@@ -45,18 +53,22 @@ button {
     font-size: 1.2rem;
     border-radius: 0.5rem;
     cursor: pointer;
+    position: relative;
 }
 
 button:hover {
     color: #bb86fc;
 }
 
-@media (max-width: 768px) {
-    .icon-button {
-        padding: 0.3rem;
-    }
-    button {
-        font-size: 1rem;
-    }
+
+a {
+    background-color:rgb(0,0,0,0.7);
+    backdrop-filter: blur(1rem);
+    padding: 0.3rem;
+    border-radius: 0.2rem;
+    font-size:0.9rem;
+    position: absolute;
+    bottom: -2rem;
+    left: -1rem;
 }
 </style>

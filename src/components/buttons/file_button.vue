@@ -8,9 +8,9 @@ const fileInput: Ref<HTMLInputElement | null> = ref(null);
 const uiStore = useTheme();
 const fileStore = useFile();
 
-const file = computed(() => {
-    return fileInput.value?.files![0]!;
-});
+const setFile = () => {
+    fileStore.uploadFile(fileInput.value!.files![0]!);
+}
 
 const currentTheme = computed(() => {
     return uiStore.themeMode;
@@ -19,11 +19,7 @@ const currentTheme = computed(() => {
 
 <template>
     <label class="button material-symbols-outlined">
-        <input
-            ref="fileInput"
-            @change="fileStore.uploadFile(file)"
-            type="file"
-        />
+        <input ref="fileInput" @change="setFile" type="file" />
 
         <slot />
     </label>

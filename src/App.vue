@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import Layout from "./components/layout.vue";
-import TextArea from "./components/text_area.vue";
 import Appbar from "./components/appbar.vue";
-import MarkdownArea from "./components/markdown_area.vue";
 import { useTheme } from "./store";
 import { computed } from "vue";
+import MarkdownArea from "./components/markdown_area.vue";
+import TextArea from "./components/text_area.vue";
 
 const uiStore = useTheme();
 
 const currentTheme = computed(() => {
     return uiStore.themeMode;
 });
+
 </script>
 
 <template>
@@ -18,9 +19,8 @@ const currentTheme = computed(() => {
         <template v-slot:appbar>
             <Appbar></Appbar>
         </template>
-
-        <TextArea></TextArea>
-        <MarkdownArea></MarkdownArea>
+        <TextArea />
+        <MarkdownArea />
     </Layout>
 </template>
 
