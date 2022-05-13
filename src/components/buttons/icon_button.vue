@@ -29,7 +29,7 @@ const currentTheme = computed(() => {
         <button @mouseover="openTooltip" @mouseleave="isTooltipOpen = false" :disabled="disabled"
             class="material-symbols-outlined">
             <slot></slot>
-            <a v-show="isTooltipOpen"> {{ props.tooltip }} </a>
+            <i v-show="isTooltipOpen"> {{ props.tooltip }} </i>
         </button>
     </div>
 </template>
@@ -61,7 +61,7 @@ button:hover {
 }
 
 
-a {
+i {
     background-color:rgb(0,0,0,0.7);
     backdrop-filter: blur(1rem);
     padding: 0.3rem;
